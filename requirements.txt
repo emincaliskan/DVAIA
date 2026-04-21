@@ -1,0 +1,29 @@
+flask>=3.0.0
+gunicorn>=21.0.0
+requests
+curl_cffi>=0.7.0
+python-dotenv
+pyyaml
+PyPDF2
+python-docx
+pytesseract
+# LangChain core + Anthropic integration (chat, tool use, extended thinking)
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-community>=0.3.0
+langchain-anthropic>=0.3.0
+anthropic>=0.40.0
+# Vector store + self-contained ONNX embeddings (no external LLM runtime needed)
+qdrant-client>=1.12.0
+fastembed>=0.4.0
+# Payload generation
+reportlab
+Pillow
+qrcode
+numpy
+scipy
+# TTS audio generation (requires ffmpeg on PATH for pydub)
+gTTS
+pydub
+# CSV dummy data generation (realistic email, name, date)
+Faker

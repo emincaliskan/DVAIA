@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Env files (pass at runtime via docker-compose)
+.env
+.env.*
+!.env.example
+
+# Virtual envs
+.venv/
+venv/
+red-venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Deleted directories (testing infrastructure)
+tests/
+runner/
+.github/
+test_create_pipeline/
+test_comparison_pipeline/
+config/localhost3000/
+config/_template/
+clients/
