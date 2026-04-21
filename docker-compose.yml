@@ -1,0 +1,26 @@
+# DVAIA: Docker setup for local dev.
+#   LLM : Anthropic Claude (requires ANTHROPIC_API_KEY in .env)
+#   RAG : embedded Qdrant on a local volume + fastembed (ONNX) embeddings
+# Run: docker compose up --build
+services:
+  dvaia:
+    build: .
+    container_name: dvaia-app
+    env_file:
+      - .env
+    environment:
+      - PORT=${PORT:-5000}
+      - DEFAULT_MODEL=${DEFAULT_MODEL:-claude-sonnet-4-6}
+      - AGENTIC_MODEL=${AGENTIC_MODEL:-claude-sonnet-4-6}
+      - DATABASE_URI=/data/app.db
+      - UPLOAD_DIR=/data/uploads
+      - PAYLOADS_OUTPUT_DIR=/data/payloads
+      - QDRANT_LOCAL_PATH=/data/qdrant
+    ports:
+      - "${PORT:-5000}:5000"
+    volumes:
+      - dvaia_data:/data
+    restart: unless-stopped
+
+volumes:
+  dvaia_data:

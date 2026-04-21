@@ -1,0 +1,55 @@
+{
+	"POST": {
+		"scheme": "https",
+		"host": "my.metaview.app",
+		"filename": "/api/candidate-search/threads/e6e3ed3a-0420-11f1-aede-239252435737/runs",
+		"remote": {
+			"Address": "63.176.8.218:443"
+		}
+	}
+}
+
+
+curl -s -X POST \
+  'https://hackerai.co/api/chat' \
+  -H 'Content-Type: application/json' \
+  -H 'Cookie: wos-session=Fe26.2*1*d73d2f3b673814e834a7fc074270f9cd8045380b2cfae1b07c870559b21b79b1*b0MrUIfrD3rH1SIKbDzuHA*508nxJH1k-N3-5_P9eYTjgj0eKuR5wfJ4qXfWb36S2Xm8_GvKXm7WvFyQM6icfHuZi26BuIpIeC2gHUV89oehg27qvRs-jHWL10Ia60wjhNc-rdZOX6Fmr9ftLz2br2F7oEI5BZgc19m9XMI5YtXdT7qbIExacnUlVpNhZu_yyJ7F3NBMMjj6WHL8eN5G4Uth6YcrqytELli7soPkqq86LvCnrvaPdF5KrKWok1f4Nhe2M37adZHo_m066bqmxvFjsGeIbKqvbmc53jhFNMla7bWlEZm2RO7pHGraH_ZZucloLHqmkPVAxMFWdrEgzkn42reQE_8ppzIvlYS9rKXmcRplMknNBZU6EUVgLwHCtbfBOHG4l8Jgl12JkNhBhC0JtJVZYx-lSMzQE8MX-S_AoiSYjApSRpQihXf6t8yti2qUwGfndz_qICU4-ZLQIwrtCKIwP6w_-RqJWsp-pmqPIE_Y6g-aeP9_TP7U3ADyU7drOo539drZVtVKt9lmEX2RNntJkEFIPece0fD5y3yIws41vJcg5tm639lxxdynBepOle8dlGBG2fMs9oRKL-LzqtJtWIWUsoKD_FNsB6cH_6qRIYH92JlibH2tOg7xM3LoIWu5yt3bIqTDPnbba_jYfEpTXk_wxNOt-1GzI3t4u63ANvYZF08UxJ4atKIKDYej7ZCdUFOpbeB5ilqwe3qTMcUFg96Zzdh-9v9-dDufR52I6wEKMCgd_770B9F0WD04hYPlOOqxmEG22v3ywrCp7HZkl6xFuD50nzvrhnjvjP0Tzm3m83W82AOR4Q9XInkQPcaW6YP_PFj-FgBgIvK11NghqO1IFvl4OEf9UdXuCGOT3-9TaUK7_p-zDaKe-j9jGCG-Gp-JNZQvpC--VGfjc2105SlzjN9uM2ls5i_OIQAtCePTV20IpG-CJtWkF8F5Bmp0iIN_eD7yvwBGECleKxydsxkaWrTGyQhJMcFHNlGcJ7cdnIgIlkmEHUuHaFjO02czrJ4a9edtAaJn6zCuq-7tApAeRs14RfbB5LJ6LK9vL0p8DCz9luaWwGjGAPHAH8wBMpMd-oosogeVBZufCcppmrHs4lv1rmWb4CXrnsy4A6BqWaO66cCcBfzpyuH8uu2fQqpOlVAJxv_c3rNYl7i-5QXdcUZcFrQmiItlRhYfvt0-kOo4LpyqxfMzitkIZHjcAkq6Bd_9eBMAz3RD5ie84pjbcy8wKYVcGtf85DROJEcdJmC-2aM0yKPPbNZynnTzziTiBHBqzRARpZjGgxQ_O6Xw8aT-9rdf-_i44RxEjo36rJABqnKwSCmaWnxQM-e0SdS9Eqy7iV9gyjZJuizZaZwi5Aww6YFtLZe9s4z2ICp4y3NypGhU_ri3hUqoZivjERE1zY2KbPu7Mzz0qN7KpG2PLEOifxGkHktOHJc0xzpppViIqGXhBAgvs7G8DiF20TtxD4TtmoHuSlUcsPV52ay4VNKJtipPtirZvWdAsIdNc2IaOcV9OrBHHWsAokB3C6eLErdCegqtm-DFfrXUQgchS4Qmo7xEqCggYRrMOq43PtKIdY9dxVUwo1XXgLQTlkLH8lpg0McLFMyHbRt-YGFTBaxFk2nH2SGYXuDr9KDnUlyXAhUyoZ4ycNiuksdH6CKv-_YrTMcxUr9**fc1091fe9ea76d0a3dffd08af33c0143ffa72a071bf9f6841b579fea76141b61*S7xmyypc2guOD7X6cnDlvZWQVZ1QsNyFbWdxGjhb_zQ~2; __cf_bm=yvyS0rIaKuAn.aGX56fAsEfPKRPlwOpoyL6aELWUBy8-1770477603-1.0.1.1-74aWVaqO4SbLEsonJEA7rAGoZkXy7x5J__ctf37o5EJL2FMnAHVVYTX4I.HUna.LsVChUfCDvqViy7AnE31OcHSlP5O5cjByiRIfqKswXaM; _cfuvid=fEkykDkeiuoR4BPLgT0uFdXCrble0hf2jgOCgfm.kKQ-1770477603831-0.0.1.1-604800000; wos-session=Fe26.2*1*5ef9f41a8d59edf4a7e32fefa6cb74f89567ea3222fb2e2973bf05ab95b0405f*wcG4mnqZh-oqNOQcsCCk-Q*3aK_UTvh8009Gs_ppQsvOIgawbTwpeSfKoWrvw0OppnLnacxTo3_44OcLWDx9-cqClTB_z-yZ4T17dVMH57c26prkPvDfJ20pqbBJLAba0gwQSznoiza2pD9ukbYCvrrFJ6fHBNxQQT1VgJZJe06ouCznM3LifROshqUv4GymSOg41hMmkWATVEvYuiy_8Xq_OgP00L-8GAfJtV3bcy0ZMHcU_8NUVesQN213FpJx7_8RmzAeAlUGSNOo_cbUIwpUs9Bu_4WjCxUSHbhrrQ4xrPJgHIVOXcVz29aYfTCTCHI1nzFjdCVd2Bn0hI9KgZR7_HqLAFRNWoAByOaNUWsOcN73JlBvziA7Sc55ba6IefexrhuLlZBS6J4AjtvWUI-Q_kfLDBHp8E0kRlmFAd6EDdGudNRN-LqarX5Ty6sf_mCSXUn5zXmMAZ9uDXKgywA_NDckbaIlarVBRaLkLtiGSumm5X9sCehDJaS9e3m8kuofdbGuC1yLfi95AI7VOrPwH05GIS4qUK9PsjQjWt11ChaXWTjkXzdA-Lg-7DnLs4n8hjLKEmHiAva_ny5AczuvLGpTQfcxwcbgC4TC-BfgSNCDm8n868Hvub7wvwURoqN1SJJ4YxzUY01tZ8IGA8H7rqvIssalWi7sjaz6LOAHH-d7hwn_69zOhWk51T2IdsR8NJIy5ouAEiYT7bkXakwTKiW_1hlISRrstd1fKVc5N7Wtcf9tr3apRQBad910RFTJAqVLJ9sWVSsUOFtdYsjpzHQ0xAN3z3IaRb25JQQuMKnwoFfIHFSBOr1LLgAoWWDbdz3Vvk7E71FOLot2oRJOEVLNQtYSoij4QOejIRRFRvUDmgKMj3Ukuvh2GiROJUxxFqYRpz_cr5kd2f4DWvxuBvCUCu4Vn-uSO_ijZaPg0IssQWGmrguK9Acm0PfdMLdwKMuyFYIRH49I_oojBRYUo-1W-hYRZgPXXGTp4PO73Xs5c20FKBVVbjy4vqJCrPpx3BzC4YnijH8cw_AuRC6ZAT0UvGtLERHsE4RTOj4l-DdMsCWYD8MRXcNLRKjk9idR7BkCPBLBX0KtFROsM6LTJ6kgYwyaGp4UJJ5HQfryDc9fdEx4Ugl2TlTrKNiATZmoxDXOU1_H8Pyry0VUIueMVOSFYjunALzph879QGfBhCE-Kac6leIK1wdH3e-slwJQqrf2HXqg5A_ahlfJRzoxNB-bIUdb-6TbwCkLCYJKlvbxj4FsTm4VeE1K2PUNTU5EO9KlFCEjW41Xin3wuHH90bEb_ND00KCZCBZcQPd1Jhygh0ma-hbvgRB6AtzNPtSj4JLgHb-Qj553c3kFOQdShOFB-ffGJ6-lTXVWmPhmwo6jMZd00oDJj4D-cRvFe5FAeCHXpzMdBKtJ8coku2VrnviAlf4VDPDjeMiAAOalA6Z7QsEbfA3nS9Xutw10WJwwFU8sQ4MmFvnzouS7yHm1Cg15YnLmu-b5QN6UPBD_cddtrGsY0Meaz0elPtB7ElpvWyJ73YsHQnSxMK8r59CvMZaa5ZKEfHa_MQmtrX9IJsq-CgEpSpbupAxqedmjFofkdNXnz7II974eDMzxI0YEJaAtzEgc64nivJXKn1uxqhUnDd3kUuXnvOQwa0_fWsNLm_BIlwmKmYn3XbA84z_**3ac1320e2b5a1468b088e5d69d3b3374414cd5987eb70e27e4135e30defafc6d*R-8wZFwEXo88vkGyw3R4Vep7WbGsDM895KWZRqI5c1w~2' \
+  -d '{"chatId": "b7a75dde-9803-4628-a30a-3ce05a3669cc", "messages": [{"parts": [{"type": "text", "text": "hello"}], "id": "f9b8bae0-7565-4758-b2f8-5274bf0d44b5", "role": "user"}], "mode": "ask", "todos": [], "temporary": false, "sandboxPreference": "e2b"}'
+data: {"type":"data-rate-limit-warning","data":{"warningType":"sliding-window","remaining":2,"resetTime":"2026-02-07T16:00:00.000Z","mode":"ask","subscription":"free"},"transient":true}
+
+data: {"type":"start","messageId":"8d53eb69-bcc0-4ec7-8548-8efd48459f90"}
+
+data: {"type":"start-step"}
+
+data: {"type":"text-start","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03"}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"Hey "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"there! "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"Ready "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"to "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"dive "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"into "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"some "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"pentesting "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"or "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"something "}
+
+data: {"type":"text-delta","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03","delta":"else?"}
+
+data: {"type":"text-end","id":"text-5723a143-75ba-dcd5-73dc-02972ae3ac03"}
+
+data: {"type":"finish-step"}
+
+data: {"type":"finish","finishReason":"stop"}
+
+data: [DONE]
+

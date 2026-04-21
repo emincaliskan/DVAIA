@@ -1,0 +1,55 @@
+# Render blueprint for DVAIA.
+#
+# Deploys one Docker web service with a 1 GB persistent disk for RAG state
+# (Qdrant embedded + SQLite DB + uploaded docs + generated payloads).
+#
+# Before you click "Apply":
+#   1. In the Render dashboard, set these env vars for this service:
+#        ANTHROPIC_API_KEY          (required -- your Claude API key)
+#        DVAIA_BASIC_AUTH_PASSWORD  (required -- long shared password)
+#      Optionally override:
+#        DVAIA_BASIC_AUTH_USER      (defaults to "dvaia")
+#        DEFAULT_MODEL              (defaults to claude-sonnet-4-6)
+#        AGENTIC_MODEL
+#   2. Render will generate SECRET_KEY automatically (see `generateValue`).
+#
+# Plan: "starter" gives 512 MB RAM / 0.5 CPU. That fits Claude API + fastembed
+# + embedded Qdrant fine because the LLM itself runs on Anthropic's side.
+
+services:
+  - type: web
+    name: dvaia
+    runtime: docker
+    plan: starter
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: dvaia-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URI
+        value: /var/data/app.db
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
+      - key: PAYLOADS_OUTPUT_DIR
+        value: /var/data/payloads
+      - key: QDRANT_LOCAL_PATH
+        value: /var/data/qdrant
+      - key: DEFAULT_MODEL
+        value: claude-sonnet-4-6
+      - key: AGENTIC_MODEL
+        value: claude-sonnet-4-6
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DVAIA_BASIC_AUTH_USER
+        value: dvaia
+      # Secrets to fill in via the Render dashboard:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: DVAIA_BASIC_AUTH_PASSWORD
+        sync: false
