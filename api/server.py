@@ -8,7 +8,8 @@ import tempfile
 from pathlib import Path
 
 from flask import (
-    Flask, request, jsonify, render_template, session, send_from_directory, Response,
+    Flask, request, jsonify, render_template, session, send_from_directory,
+    redirect, url_for,
 )
 
 from core.config import get_agentic_model_id, get_default_model_id
@@ -21,8 +22,7 @@ from app import documents as app_documents
 from app import mfa as app_mfa
 from app import retrieval as app_retrieval
 from app.config import (
-    get_basic_auth_password,
-    get_basic_auth_user,
+    get_login_password,
     get_secret_key,
 )
 from payloads.config import get_output_dir as get_payloads_output_dir
@@ -31,32 +31,32 @@ ROOT = Path(__file__).resolve().parent.parent
 
 app = Flask(__name__, template_folder="templates")
 app.config["SECRET_KEY"] = get_secret_key()
+app.config["SESSION_COOKIE_SECURE"] = True
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+
+# Paths that skip the login gate. Static assets are handled separately below.
+_GATE_EXEMPT_PATHS = {"/login", "/api/health"}
 
 
 @app.before_request
-def _require_basic_auth():
-    """Gate every request behind HTTP basic auth when credentials are configured.
-    /api/health stays open so Render health checks still pass."""
-    if request.path == "/api/health":
+def _require_gate_login():
+    """Redirect unauthenticated users to /login. The gate is active whenever
+    DVAIA_LOGIN_PASSWORD (or the legacy DVAIA_BASIC_AUTH_PASSWORD) is set.
+    /api/health stays open so Render health checks still pass. Static assets
+    and the login page itself are exempt."""
+    path = request.path or "/"
+    if path in _GATE_EXEMPT_PATHS or path.startswith("/static/"):
         return None
-    user = get_basic_auth_user()
-    password = get_basic_auth_password()
-    if not user or not password:
-        return None  # auth disabled (local dev)
-    auth = request.authorization
-    if (
-        auth
-        and auth.username is not None
-        and auth.password is not None
-        and hmac.compare_digest(auth.username, user)
-        and hmac.compare_digest(auth.password, password)
-    ):
+    password = get_login_password()
+    if not password:
+        return None  # auth disabled (local dev with no password configured)
+    if session.get("gate_authenticated") is True:
         return None
-    return Response(
-        "Authentication required.\n",
-        status=401,
-        headers={"WWW-Authenticate": 'Basic realm="DVAIA"'},
-    )
+    # JSON API callers get a 401 with a redirect hint; browsers get a 302.
+    if request.accept_mimetypes.best == "application/json" or path.startswith("/api/"):
+        return jsonify({"error": "Login required", "login_url": "/login"}), 401
+    return redirect(url_for("login_page", next=request.full_path if request.query_string else path))
 
 # Initialize DB on first use (call once at startup)
 _initialized = False
@@ -87,6 +87,42 @@ def index():
 def api_health():
     """Health check for probes and load balancers."""
     return jsonify({"status": "ok"})
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login_page():
+    """Gate login. GET renders the form; POST verifies the password against
+    DVAIA_LOGIN_PASSWORD (or DVAIA_BASIC_AUTH_PASSWORD) and sets the session
+    flag. A correct password redirects to the original `next` path."""
+    expected = get_login_password()
+    next_url = request.args.get("next") or request.form.get("next") or "/"
+    # Block open redirects: only accept relative paths starting with /.
+    if not next_url.startswith("/") or next_url.startswith("//"):
+        next_url = "/"
+
+    if request.method == "POST":
+        supplied = (request.form.get("password") or "").strip()
+        if not expected:
+            # If no password is configured, let anyone in (local dev parity).
+            session["gate_authenticated"] = True
+            return redirect(next_url)
+        if supplied and hmac.compare_digest(supplied, expected):
+            session["gate_authenticated"] = True
+            session.permanent = True
+            return redirect(next_url)
+        return render_template("login.html", error="Incorrect password.", next=next_url), 401
+
+    # Already logged in? Bounce straight to the app.
+    if session.get("gate_authenticated") is True:
+        return redirect(next_url)
+    return render_template("login.html", error=None, next=next_url)
+
+
+@app.route("/logout-gate", methods=["GET", "POST"])
+def logout_gate():
+    """Clear the gate session flag (does not touch the in-app user session)."""
+    session.pop("gate_authenticated", None)
+    return redirect(url_for("login_page"))
 
 
 @app.route("/api/models", methods=["GET"])

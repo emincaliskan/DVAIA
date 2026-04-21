@@ -79,17 +79,18 @@ def get_qdrant_api_key() -> Optional[str]:
     return val if val else None
 
 
-def get_basic_auth_user() -> Optional[str]:
+def get_login_password() -> Optional[str]:
     """
-    Optional HTTP basic-auth username. When DVAIA_BASIC_AUTH_USER and
-    DVAIA_BASIC_AUTH_PASSWORD are both set, the app gates every request
-    behind basic auth. Leave unset for unauthenticated local dev.
+    Shared password for the login gate. When set, every request requires a
+    valid session cookie obtained by entering this password on /login.
+
+    Reads DVAIA_LOGIN_PASSWORD first, then falls back to the legacy
+    DVAIA_BASIC_AUTH_PASSWORD env var (the value existing Render deploys
+    already have configured). If neither is set, the app refuses to start
+    serving protected routes.
     """
-    val = os.getenv("DVAIA_BASIC_AUTH_USER", "").strip()
-    return val or None
-
-
-def get_basic_auth_password() -> Optional[str]:
-    """HTTP basic-auth password; see get_basic_auth_user."""
-    val = os.getenv("DVAIA_BASIC_AUTH_PASSWORD", "")
+    val = os.getenv("DVAIA_LOGIN_PASSWORD", "").strip()
+    if val:
+        return val
+    val = os.getenv("DVAIA_BASIC_AUTH_PASSWORD", "").strip()
     return val or None
