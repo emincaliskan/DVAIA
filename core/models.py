@@ -36,7 +36,8 @@ def _options_to_llm_kwargs(options: Optional[Dict[str, Any]]) -> Dict[str, Any]:
             pass
     if "temperature" in options and options["temperature"] is not None:
         try:
-            out["temperature"] = float(options["temperature"])
+            # Claude caps temperature at 1.0 (Ollama allowed 0..2).
+            out["temperature"] = max(0.0, min(1.0, float(options["temperature"])))
         except (TypeError, ValueError):
             pass
     if "top_k" in options and options["top_k"] is not None:
@@ -46,7 +47,7 @@ def _options_to_llm_kwargs(options: Optional[Dict[str, Any]]) -> Dict[str, Any]:
             pass
     if "top_p" in options and options["top_p"] is not None:
         try:
-            out["top_p"] = float(options["top_p"])
+            out["top_p"] = max(0.0, min(1.0, float(options["top_p"])))
         except (TypeError, ValueError):
             pass
     return out
